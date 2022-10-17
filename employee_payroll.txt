@@ -1,0 +1,30 @@
+//** CREATION OF DATABASE**//
+create database payroll_service;
+
+//** GO TO THE DATABASE **//
+use payroll_service;
+
+//** CREATION OF TABLE IN DATABASE **//
+create table employee_payroll(ID int auto_increment primary key, Name varchar(255),Salary LONG,StartDate date);
+
+//** INSERTION OF VALUES **//
+ insert into employee_payroll(NAME,SALARY,STARTDATE)values("Varun",25000,'2016-06-10'),("Akask",30000,'2017-06-22'),("Kanthi",40000,'2020-06-21');
+
+//** RETRIEVE DATA **//
+select * from employee_payroll;
+
+//** SALARY DATA AND RANGE **//
+select SALARY from employee_payroll where NAME="Varun";
+select  * from employee_payroll where STARTDATE between cast('2017-01-01' as date) and DATE(now());
+
+//** ADDING NEW COLOUMN TO THE TABLE AND SETTING VALUES **//
+alter table employee_payroll add GENDER char(1);
+update employee_payroll set GENDER = 'M' name = 'Varun' or name = 'Kanthi';
+update employee_payroll set GENDER= 'F' where name='Akask';
+
+//* ABILITY TO FIND SUM,MAX,MIN,AVG,COUNT **//
+SELECT SUM(salary) FROM employee_payroll WHERE gender = 'M' GROUP BY gender;
+SELECT MAX(salary) FROM employee_payroll WHERE gender = 'M' GROUP BY gender;
+SELECT MIN(salary) FROM employee_payroll WHERE gender = 'M' GROUP BY gender;
+SELECT AVG(salary) FROM employee_payroll WHERE gender = 'M' GROUP BY gender;
+SELECT COUNT(salary) FROM employee_payroll WHERE gender = 'M' GROUP BY gender;
